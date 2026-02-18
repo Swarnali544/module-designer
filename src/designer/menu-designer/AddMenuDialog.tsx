@@ -41,9 +41,9 @@ export const AddMenuDialog: React.FC<Props> = ({
   const handleSubmit = () => {
       const newMenuNode: MenuNode = {
         label,
-        description,
+        // description,
         pageId: pageId || undefined,
-        children: [],
+        // children: [],
       };
       onSubmit(newMenuNode, parentId);
       resetDialog();

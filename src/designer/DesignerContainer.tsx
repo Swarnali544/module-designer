@@ -17,6 +17,8 @@ const schemaService = new SchemaService();
 import { AddTemplateDialog } from "./template-registry/AddTemplateDialog";
 import { AddApiConfigDialog } from "./api-registry/AddApiConfigDialog";
 
+import masterJson from "../master.json";
+
 export const DesignerContainer: React.FC = () => {
   // Menu related states
   const [menu, setMenu] = useState<MenuNode[]>([]);
@@ -81,6 +83,7 @@ export const DesignerContainer: React.FC = () => {
    ** ==========================================================================================================================
    */
 
+   const [selectedPageId, setSelectedPageId] = useState<string | null>(null);
   useEffect(() => {
     fetchMenus();
     fetchPages();
@@ -115,16 +118,19 @@ export const DesignerContainer: React.FC = () => {
     } else {
       updatedMenus = await menuService.addMenu(newMenu);
     }
-    // setMenu(updatedMenus);
     fetchMenus();
     setAddMenuDialogOpen(false);
   };
-  const handlePageSelect = (node: MenuNode) => {
+  const handlePageSelect = async(node: MenuNode) => {
     let pageId: string = node.pageId as string;
 
+    setSelectedPageId(pageId);
+
+    let existingPageSchema = await schemaService.getSchema(pageId);
     //TODO : Add the logic to render the already create page in the right panel
-    if (schemaService.getSchema(pageId) !== null) {
-      setActiveSchema(schemaService.getSchema(pageId));
+    if (existingPageSchema !== null) {
+      // setActiveSchema(existingPageSchema);
+      setActiveSchema(masterJson.page);
     } else {
       setPendingPageId(pageId);
       setLayoutSelectionDialogState(true);
@@ -144,7 +150,8 @@ export const DesignerContainer: React.FC = () => {
     const newPageSchema = newPageSchemaResp?.data;
 
     setLayoutSelectionDialogState(false);
-    setActiveSchema(newPageSchema);
+    // setActiveSchema(newPageSchema);
+    setActiveSchema(masterJson.page);
     setPendingPageId(null);
   };
 
@@ -217,7 +224,7 @@ export const DesignerContainer: React.FC = () => {
           {!activeSchema ? (
             <div>Select a page</div>
           ) : (
-            <PageRenderer schema={activeSchema} editMode={true} />
+            <PageRenderer schema={activeSchema} editMode={true} pageId={selectedPageId}/>
           )}
         </Box>
       </div>

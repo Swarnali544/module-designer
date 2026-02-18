@@ -5,8 +5,8 @@ const API_BASE_URL = "http://192.168.33.91:3000";
 class TemplateService {
   async getTemplates(): Promise<Template[]> {
     return axios
-      .get(`${API_BASE_URL}/template`)
-      .then((response: any) => response.data)
+      .get(`${API_BASE_URL}/api/template`)
+      .then((response: any) => response.data?.templates || [])
       .catch((error: any) => {
         throw error;
       });
@@ -21,10 +21,19 @@ class TemplateService {
       });
   }
 
-//   async getTemplateById(templateId: string): Promise<Template | null> {
-//     const template = this.templates.find((t) => t.id === templateId);
-//     return template || null;
-//   }
+  async getTemplateById(templateId: string): Promise<Template | null> {
+    return axios
+      .get(`${API_BASE_URL}/api/template/${templateId}`)
+      .then((response: any) => response.data || null)
+      .catch((error: any) => {
+        throw error;
+      });
+  }
+
+  //   async getTemplateById(templateId: string): Promise<Template | null> {
+  //     const template = this.templates.find((t) => t.id === templateId);
+  //     return template || null;
+  //   }
 }
 
 export default TemplateService;

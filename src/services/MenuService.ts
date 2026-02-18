@@ -40,8 +40,8 @@ class MenuService {
     let payload = {
       ...newMenu,
       icon: "users",
-      route: "/users",
-      order: 1,
+      route: `/${newMenu.label.toLowerCase()}`,
+      order: 3,
     };
     return axios
       .post(`${API_BASE_URL}/api/menu`, payload)

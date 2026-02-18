@@ -1,0 +1,94 @@
+{
+    "id": "60844c8d-5933-492b-813f-8719cffba6cb",
+    "label": "Users",
+    "icon": "users",
+    "route": "/users",
+    "order": 3,
+    "pageId": "b905da49-592a-402e-af57-c4e3eb6a4ef2",
+    "createdAt": "2026-02-18T10:36:55.662Z",
+    "page": {
+        "id": "b905da49-592a-402e-af57-c4e3eb6a4ef2",
+        "label": "Users",
+        "slug": "users",
+        "layoutJson": {
+            "type": "split",
+            "left": [
+                {
+                    "template": {
+                        "id": "842825ab-c50d-4305-a4eb-e5bc319ba9bb",
+                        "label": "ListWrapper",
+                        "category": "ListWrapper",
+                        "schemaJson": {},
+                        "addtionalUIJson": {
+                            "props": {
+                                "header": {
+                                    "type": "static",
+                                    "value": "user details"
+                                },
+                                "items": {
+                                    "type": "dynamic",
+                                    "value": "username"
+                                }
+                            }
+                        },
+                        "createdAt": "2026-02-18T10:36:14.334Z"
+                    },
+                    "apiConfig": {
+                        "id": "ed2211fb-8020-4b67-adf3-33fca4336051",
+                        "label": "List Users (from json placeholder apis)",
+                        "description": "List Users (from json placeholder apis)",
+                        "path": "https://jsonplaceholder.typicode.com/users",
+                        "method": "GET",
+                        "paramsJson": {},
+                        "headersJson": {},
+                        "bodyJson": null,
+                        "cacheTtl": null,
+                        "timeoutMs": 30000,
+                        "createdAt": "2026-02-18T10:35:39.596Z"
+                    }
+                }
+            ],
+            "right": [
+                {
+                    "template": {
+                        "id": "842825ab-c50d-4305-a4eb-e5bc319ba9bc",
+                        "label": "CardWrapper",
+                        "category": "CardWrapper",
+                        "schemaJson": {},
+                        "addtionalUIJson": {
+                            "props": {
+                                "title": {
+                                    "type": "dynamic",
+                                    "value": "username"
+                                },
+                                "subtitle": {
+                                    "type": "dynamic",
+                                    "value": "email"
+                                },
+                                "content": {
+                                    "type": "dynamic",
+                                    "value": "address"
+                                }
+                            },
+                            "createdAt": "2026-02-18T10:36:14.334Z"
+                        }
+                    },
+                    "apiConfig": {
+                            "id": "ed2211fb-8020-4b67-adf3-33fca4336051",
+                            "label": "User Details (from json placeholder apis)",
+                            "description": "User Details (from json placeholder apis)",
+                            "path": "https://jsonplaceholder.typicode.com/users/1",
+                            "method": "GET",
+                            "paramsJson": {},
+                            "headersJson": {},
+                            "bodyJson": null,
+                            "cacheTtl": null,
+                            "timeoutMs": 30000,
+                            "createdAt": "2026-02-18T10:35:39.596Z"
+                        }
+                }
+            ]
+        },
+        "createdAt": "2026-02-18T10:36:31.763Z"
+    }
+}

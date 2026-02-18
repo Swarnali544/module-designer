@@ -15,12 +15,20 @@ class ApiConfigService {
   async getAllApiConfigs(): Promise<ApiConfig[]> {
     return axios
       .get(`${API_BASE_URL}/api/apiconfig`)
-      .then((response: any) => response.data)
+      .then((response: any) => response.data?.apiConfigurations || [])
       .catch((error: any) => {
         throw error;
       });
   }
 
+  async getApiConfigById(configId: string): Promise<ApiConfig | null> {
+    return axios
+      .get(`${API_BASE_URL}/api/apiconfig/${configId}`)
+      .then((response: any) => response.data || null)
+      .catch((error: any) => {
+        throw error;
+      });
+  }
 }
 
 export default ApiConfigService;

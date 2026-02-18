@@ -15,7 +15,7 @@ const ListWrapper = ({ header, items }) => (
     <List>
       {items && items.map((item, idx) => (
         <ListItem key={idx}>
-          <ListItemText primary={item.label} />
+          <ListItemText primary={item} />
         </ListItem>
       ))}
     </List>
