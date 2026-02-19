@@ -67,7 +67,7 @@
                                 },
                                 "content": {
                                     "type": "dynamic",
-                                    "value": "address"
+                                    "value": "address.street"
                                 }
                             },
                             "createdAt": "2026-02-18T10:36:14.334Z"

@@ -84,6 +84,7 @@ export const DesignerContainer: React.FC = () => {
    */
 
    const [selectedPageId, setSelectedPageId] = useState<string | null>(null);
+   const [selectedMenuId, setSelectedMenuId] = useState<any>(null);
   useEffect(() => {
     fetchMenus();
     fetchPages();
@@ -123,14 +124,19 @@ export const DesignerContainer: React.FC = () => {
   };
   const handlePageSelect = async(node: MenuNode) => {
     let pageId: string = node.pageId as string;
+    let menuId: any = node.id;
 
     setSelectedPageId(pageId);
+    setSelectedMenuId(menuId);
 
-    let existingPageSchema = await schemaService.getSchema(pageId);
+    // let existingPageSchema = await schemaService.getSchema(pageId);
+
+    let existingPageSchema = await schemaService.getSchemaFromMenuId(menuId);
+    console.log("Existing page schema for selected menu:", existingPageSchema);
     //TODO : Add the logic to render the already create page in the right panel
     if (existingPageSchema !== null) {
-      // setActiveSchema(existingPageSchema);
-      setActiveSchema(masterJson.page);
+      setActiveSchema(existingPageSchema.page);
+      // setActiveSchema(masterJson.page);
     } else {
       setPendingPageId(pageId);
       setLayoutSelectionDialogState(true);
@@ -207,9 +213,9 @@ export const DesignerContainer: React.FC = () => {
           }}
         >
           <Box p={1.5}>
-            <MenuRenderer menu={menu} onPageSelect={handlePageSelect} />
+            <MenuRenderer menu={menu} onPageSelect={handlePageSelect} handleAddMenuButtonClick={handleAddMenuButtonClick}/>
           </Box>
-          <Divider />
+          {/* <Divider />
           <Box p={1.5}>
             <Button
               variant="outlined"
@@ -218,7 +224,7 @@ export const DesignerContainer: React.FC = () => {
             >
               + Add Menu
             </Button>
-          </Box>
+          </Box> */}
         </Paper>
         <Box bgcolor="#fff">
           {!activeSchema ? (

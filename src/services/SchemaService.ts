@@ -76,6 +76,17 @@ class SchemaService {
         throw error;
       });
   }
+
+  getSchemaFromMenuId(menuId: string) {
+    return axios
+      .get(`${API_BASE_URL}/api/menu/${menuId}`)
+      .then((response: any) => {
+        return response.data;
+      })
+      .catch((error: any) => {
+        throw error;
+      });
+  }
 }
 
 export default SchemaService;

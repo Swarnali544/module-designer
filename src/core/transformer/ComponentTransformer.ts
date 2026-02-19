@@ -19,7 +19,7 @@ class ComponentTransformer {
 
     const realProps: Record<string, any> = {};
 
-    const propConfig = componentSchema.template?.addtionalUIJson?.props || {};
+    const propConfig = componentSchema.configJson?.props || {};
 
     Object.entries(propConfig).forEach(([propName, mapping]: [string, any]) => {
       if (mapping.type === "static") {

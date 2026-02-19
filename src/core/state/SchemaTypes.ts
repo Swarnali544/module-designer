@@ -55,4 +55,6 @@ export interface PageComponentConfig {
   apiConfigId?: string;
   configJson: any;
   positionJson: any;
+  section : string;
+  addtionalUIJson : any;
 }

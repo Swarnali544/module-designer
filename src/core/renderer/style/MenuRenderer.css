@@ -1,0 +1,145 @@
+.sidebar {
+  background-color: #16181d;
+  color: #c9cdd4;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 13px;
+}
+
+.sidebar-header {
+  padding: 20px 16px 8px;
+}
+
+.app-title {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  margin-bottom: 4px;
+}
+
+.app-subtitle {
+  color: #e0402a;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 16px 8px;
+}
+
+.nav-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #555d6b;
+}
+
+.edit-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #555d6b;
+  cursor: pointer;
+}
+
+.edit-label:hover {
+  color: #e0402a;
+}
+
+.nav-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 8px;
+}
+
+/* Node item row */
+.node-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #c9cdd4;
+  margin-bottom: 1px;
+  transition: background-color 0.15s, color 0.15s;
+  user-select: none;
+}
+
+.node-item.depth-child {
+  color: #8a9ab0;
+}
+
+.node-item:hover {
+  background-color: #1e2128;
+  color: #ffffff;
+}
+
+.node-item.active {
+  background-color: #e0402a;
+  color: #ffffff;
+}
+
+.node-item.active:hover {
+  background-color: #e0402a;
+  color: #ffffff;
+}
+
+.node-label {
+  font-size: 13px;
+}
+
+.node-item.active .node-label {
+  font-weight: 600;
+}
+
+.chevron {
+  display: flex;
+  align-items: center;
+  color: #555d6b;
+  font-size: 12px;
+  width: 16px;
+  flex-shrink: 0;
+}
+
+.node-item.active .chevron {
+  color: #ffffff;
+}
+
+.chevron-placeholder {
+  width: 16px;
+  flex-shrink: 0;
+}
+
+/* Footer */
+.sidebar-footer {
+  margin-top: auto;
+}
+
+.footer-meta {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px 12px;
+  color: #3e4552;
+  font-size: 11px;
+}
+
+.export-link {
+  color: #e0402a;
+  cursor: pointer;
+}
+
+.export-link:hover {
+  text-decoration: underline;
+}

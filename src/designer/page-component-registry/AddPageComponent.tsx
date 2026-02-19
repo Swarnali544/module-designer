@@ -31,12 +31,14 @@ interface Props {
   open: boolean;
   onClose: () => void;
   pageId: string | null;
+  section: string;
 }
 
 export const AddPageComponentDialog: React.FC<Props> = ({
   open,
   onClose,
   pageId,
+  section,
 }) => {
   const [templates, setTemplates] = useState<Template[]>([]);
   const [apiConfigs, setApiConfigs] = useState<ApiConfig[]>([]);
@@ -134,6 +136,9 @@ export const AddPageComponentDialog: React.FC<Props> = ({
           props: propState,
         },
         positionJson: {},
+        section: section,
+        addtionalUIJson: {
+        },
       };
       console.log("Payload for creating page component: ", payload);
       let resp = await pageComponentService.createPageComponent(payload);

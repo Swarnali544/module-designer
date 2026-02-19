@@ -36,9 +36,11 @@ export const ComponentRenderer: React.FC<Props> = ({ componentSchema }) => {
 
         const builtProps =
           await ComponentTransformer.buildComponentProps(componentSchema);
+
+        console.log("Built props for component:", builtProps);
+
         setProps(builtProps);
       } catch (err) {
-        console.log(err)
         console.error("Error loading component:", err);
       }
     };
